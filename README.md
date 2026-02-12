@@ -196,18 +196,6 @@ POST /api/auth/register
 }
 ```
 
-**Response:** `201 Created`
-```json
-{
-  "success": true,
-  "message": "User registered successfully",
-  "data": {
-    "userId": 1,
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-  }
-}
-```
-
 #### Login User
 ```http
 POST /api/auth/login
@@ -221,19 +209,6 @@ POST /api/auth/login
 }
 ```
 
-**Response:** `200 OK`
-```json
-{
-  "success": true,
-  "data": {
-    "userId": 1,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-  }
-}
-```
-
 ---
 
 ### 👤 User Routes
@@ -244,17 +219,6 @@ GET /api/user/get
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
-```json
-{
-  "success": true,
-  "data": {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "careerGoal": "Software Engineer"
-  }
-}
 ```
 
 #### Update User Profile
@@ -270,8 +234,6 @@ PUT /api/user/update
   "careerGoal": "Senior Software Engineer"
 }
 ```
-
-**Response:** `200 OK`
 
 ---
 
@@ -292,22 +254,7 @@ POST /api/application/add
   "status": "applied",
   "notes": "Applied through company website"
 }
-```
 
-**Response:** `201 Created`
-```json
-{
-  "success": true,
-  "message": "Application created successfully",
-  "data": {
-    "id": 1,
-    "companyName": "Google",
-    "jobTitle": "Software Engineer",
-    "applicationDate": "2024-02-01",
-    "status": "applied",
-    "notes": "Applied through company website"
-  }
-}
 ```
 
 #### Get All Applications
@@ -316,23 +263,7 @@ GET /api/application/get
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
-```json
-{
-  "success": true,
-  "count": 5,
-  "data": [
-    {
-      "id": 1,
-      "companyName": "Google",
-      "jobTitle": "Software Engineer",
-      "applicationDate": "2024-02-01",
-      "status": "applied",
-      "notes": "Applied through company website",
-      "createdAt": "2024-02-01T10:30:00Z"
-    }
-  ]
-}
+
 ```
 
 #### Update Application
@@ -348,8 +279,6 @@ PUT /api/application/update/:id
   "notes": "First round completed"
 }
 ```
-
-**Response:** `200 OK`
 
 #### Delete Application
 ```http
@@ -368,17 +297,6 @@ POST /api/application/:id/attachments
 **Request Body:** `multipart/form-data`
 - `file`: The file to upload (resume, cover letter, etc.)
 
-**Response:** `201 Created`
-```json
-{
-  "success": true,
-  "message": "File uploaded successfully",
-  "data": {
-    "id": 1,
-    "fileUrl": "/uploads/resume_1234567890.pdf",
-    "JobApplicationId": 1
-  }
-}
 ```
 
 #### Search Applications
@@ -390,8 +308,6 @@ GET /api/application/search?q=google
 **Query Parameters:**
 - `q` - Search term (searches in companyName, jobTitle, notes)
 
-**Response:** `200 OK`
-
 #### Filter Applications
 ```http
 GET /api/application/filter?status=applied&startDate=2024-01-01&endDate=2024-12-31
@@ -402,8 +318,6 @@ GET /api/application/filter?status=applied&startDate=2024-01-01&endDate=2024-12-
 - `status` - Filter by application status
 - `startDate` - Filter by start date (YYYY-MM-DD)
 - `endDate` - Filter by end date (YYYY-MM-DD)
-
-**Response:** `200 OK`
 
 ---
 
@@ -428,15 +342,12 @@ POST /api/company/add
 }
 ```
 
-**Response:** `201 Created`
-
 #### Get All Companies
 ```http
 GET /api/company/get
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
 
 #### Update Company
 ```http
@@ -444,15 +355,12 @@ PUT /api/company/update/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
 
 #### Delete Company
 ```http
 DELETE /api/company/delete/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
-
-**Response:** `200 OK`
 
 ---
 
@@ -475,7 +383,6 @@ POST /api/joblisting/save
 }
 ```
 
-**Response:** `201 Created`
 
 #### Get Saved Listings
 ```http
@@ -491,7 +398,6 @@ DELETE /api/joblisting/delete/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
 
 ---
 
@@ -511,45 +417,12 @@ POST /api/reminder/add/:applicationId
 }
 ```
 
-**Response:** `201 Created`
-```json
-{
-  "success": true,
-  "message": "Reminder created successfully",
-  "data": {
-    "id": 1,
-    "reminderDate": "2024-02-15T10:00:00Z",
-    "message": "Follow up on Google application",
-    "isSent": false,
-    "JobApplicationId": 1
-  }
-}
-```
-
 #### Get All Reminders
 ```http
 GET /api/reminder/get
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
-```json
-{
-  "success": true,
-  "count": 3,
-  "data": [
-    {
-      "id": 1,
-      "reminderDate": "2024-02-15T10:00:00Z",
-      "message": "Follow up on Google application",
-      "isSent": false,
-      "JobApplication": {
-        "companyName": "Google",
-        "jobTitle": "Software Engineer"
-      }
-    }
-  ]
-}
 ```
 
 ---
@@ -562,28 +435,6 @@ GET /api/dashboard/overview
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
-```json
-{
-  "success": true,
-  "data": {
-    "totalApplications": 25,
-    "statusBreakdown": {
-      "applied": 10,
-      "interviewed": 8,
-      "offered": 3,
-      "rejected": 3,
-      "accepted": 1
-    },
-    "recentApplications": [],
-    "upcomingReminders": [],
-    "applicationTrend": {
-      "thisWeek": 5,
-      "lastWeek": 3,
-      "thisMonth": 15
-    }
-  }
-}
 ```
 
 ---
