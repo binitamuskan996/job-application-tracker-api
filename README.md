@@ -40,81 +40,86 @@ Server runs on:
 
 ---
 
-# API Endpoints
+📌 API Endpoints
 
----
+All endpoints (except register & login) require JWT authentication.
 
-API Endpoints
-🔐 Auth Routes
+🔐 Authentication Routes
 Register User
 
-POST | /auth/register
+POST /auth/register
 
-Key	Value
-name	John Doe
-email	john@example.com
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "careerGoal": "Backend Developer"
+}
 
-password	password123
-careerGoal	Backend Developer
 Login User
 
-POST | /auth/login
+POST /auth/login
 
-Key	Value
-email	john@example.com
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
 
-password	password123
 👤 User Routes
 Get Profile
 
-GET | /user/get
+GET /user/get
 
 Update Profile
 
-PUT | /user/update
+PUT /user/update
 
-Key	Value
-name	John Doe
-careerGoal	Become Full Stack Developer
+{
+  "name": "John Doe",
+  "careerGoal": "Full Stack Developer"
+}
+
 🏢 Company Routes
 Create Company
 
-POST | /companies/add
+POST /companies/add
 
-Key	Value
-companyName	Google
-contactPerson	HR Manager
-email	hr@google.com
+{
+  "companyName": "Google",
+  "contactPerson": "HR Manager",
+  "email": "hr@google.com",
+  "phone": "+123456789",
+  "industry": "Technology",
+  "companySize": "10000+",
+  "notes": "Dream company"
+}
 
-phone	+123456789
-industry	Technology
-companySize	10000+
-notes	Dream company
-Get Companies
+Get All Companies
 
-GET | /companies/get
+GET /companies/get
 
 Update Company
 
-PUT | /companies/update/{id}
+PUT /companies/update/:id
 
 Delete Company
 
-DELETE | /companies/delete/{id}
+DELETE /companies/delete/:id
 
 📄 Application Routes
 Create Application
 
-POST | /applications/add
+POST /applications/add
 
-Key	Value
-companyId	1
-jobTitle	Backend Developer
-applicationDate	2026-02-01
-status	applied
-notes	Waiting for response
+{
+  "companyId": 1,
+  "jobTitle": "Backend Developer",
+  "applicationDate": "2026-02-01",
+  "status": "applied",
+  "notes": "Waiting for response"
+}
 
-Status values:
+Status Values
 
 applied
 
@@ -126,94 +131,90 @@ rejected
 
 accepted
 
-Get Applications
+Get All Applications
 
-GET | /applications/get
+GET /applications/get
 
 Update Application
 
-PUT | /applications/update/{id}
+PUT /applications/update/:id
 
 Delete Application
 
-DELETE | /applications/delete/{id}
+DELETE /applications/delete/:id
 
 Search Applications
 
-GET | /applications/search?keyword=developer
+GET /applications/search?keyword=developer
 
 Filter Applications
 
-GET | /applications/filter?status=interviewed
+GET /applications/filter?status=interviewed
 
 Upload Attachment
 
-POST | /applications/{id}/attachments
+POST /applications/:id/attachments
+
+Content-Type:
+
+multipart/form-data
+
 
 Form Data:
 
-Key	Value
-file	Resume.pdf
+file: Resume.pdf
+
 
 Stored Field:
 
 fileUrl (TEXT)
 
-📎 Application Files Model
-Field	Type
-fileUrl	TEXT
 ⏰ Reminder Routes
 Create Reminder
 
-POST | /reminders/add/{applicationId}
+POST /reminders/add/:applicationId
 
-Key	Value
-reminderDate	2026-02-20T10:00:00
-message	Send follow-up email
-isSent	false (default)
-Get Reminders
+{
+  "reminderDate": "2026-02-20T10:00:00",
+  "message": "Send follow-up email",
+  "isSent": false
+}
 
-GET | /reminders/get
+Get All Reminders
 
-Reminder Fields:
+GET /reminders/get
 
-Field	Type
-reminderDate	DATE
-message	STRING
-isSent	BOOLEAN
-📊 Dashboard Route
+📊 Dashboard
 Get Dashboard Overview
 
-GET | /dashboard/overview
+GET /dashboard/overview
 
 Returns:
 
 Total Applications
 
-Applications by Status
+Applications grouped by status
 
 Upcoming Reminders
 
 💾 Saved Job Listings
 Save Job
 
-POST | /jobs/save
+POST /jobs/save
 
-(Fields based on your JobListing model — if you have title, company, link, etc.)
+{
+  "title": "Full Stack Developer",
+  "company": "Amazon",
+  "link": "https://amazon.jobs"
+}
 
-Example:
-
-Key	Value
-title	Full Stack Developer
-company	Amazon
-link	https://amazon.jobs
 Get Saved Jobs
 
-GET | /jobs/get
+GET /jobs/get
 
 Delete Saved Job
 
-DELETE | /jobs/delete/{id}
+DELETE /jobs/delete/:id
 # Features
 
 - JWT Authentication
@@ -229,7 +230,7 @@ DELETE | /jobs/delete/{id}
 
 # Author
 
-Your Name
+Binita Kumari
 
 ---
 
