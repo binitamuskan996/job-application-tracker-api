@@ -167,7 +167,7 @@ The server will start on `http://localhost:3000` (or your configured PORT)
 
 ### Base URL
 ```
-http://localhost:3000/api
+http://localhost:3000/api/v1
 ```
 
 ### Authentication
@@ -183,7 +183,7 @@ Authorization: Bearer <your_jwt_token>
 
 #### Register User
 ```http
-POST /api/auth/register
+POST /api/v1/auth/register
 ```
 
 **Request Body:**
@@ -198,7 +198,7 @@ POST /api/auth/register
 
 #### Login User
 ```http
-POST /api/auth/login
+POST /api/v1/auth/login
 ```
 
 **Request Body:**
@@ -215,15 +215,13 @@ POST /api/auth/login
 
 #### Get User Profile
 ```http
-GET /api/user/get
+GET /api/v1/users/get
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-```
-
 #### Update User Profile
 ```http
-PUT /api/user/update
+PUT /api/v1/users/update
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -241,7 +239,7 @@ PUT /api/user/update
 
 #### Create Application
 ```http
-POST /api/application/add
+POST /api/v1/applications/add
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -254,21 +252,17 @@ POST /api/application/add
   "status": "applied",
   "notes": "Applied through company website"
 }
-
 ```
 
 #### Get All Applications
 ```http
-GET /api/application/get
+GET /api/v1/applications/get
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-
-```
-
 #### Update Application
 ```http
-PUT /api/application/update/:id
+PUT /api/v1/applications/update/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -282,26 +276,22 @@ PUT /api/application/update/:id
 
 #### Delete Application
 ```http
-DELETE /api/application/delete/:id
+DELETE /api/v1/applications/delete/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-**Response:** `200 OK`
-
 #### Upload Application Attachment
 ```http
-POST /api/application/:id/attachments
+POST /api/v1/applications/:id/attachments
 ```
 **Headers:** `Authorization: Bearer <token>`
 
 **Request Body:** `multipart/form-data`
 - `file`: The file to upload (resume, cover letter, etc.)
 
-```
-
 #### Search Applications
 ```http
-GET /api/application/search?q=google
+GET /api/v1/applications/search?q=google
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -310,7 +300,7 @@ GET /api/application/search?q=google
 
 #### Filter Applications
 ```http
-GET /api/application/filter?status=applied&startDate=2024-01-01&endDate=2024-12-31
+GET /api/v1/applications/filter?status=applied&startDate=2024-01-01&endDate=2024-12-31
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -325,7 +315,7 @@ GET /api/application/filter?status=applied&startDate=2024-01-01&endDate=2024-12-
 
 #### Create Company
 ```http
-POST /api/company/add
+POST /api/v1/company/add
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -344,21 +334,19 @@ POST /api/company/add
 
 #### Get All Companies
 ```http
-GET /api/company/get
+GET /api/v1/company/get
 ```
 **Headers:** `Authorization: Bearer <token>`
-
 
 #### Update Company
 ```http
-PUT /api/company/update/:id
+PUT /api/v1/company/update/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-
 #### Delete Company
 ```http
-DELETE /api/company/delete/:id
+DELETE /api/v1/company/delete/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -368,7 +356,7 @@ DELETE /api/company/delete/:id
 
 #### Save Job Listing
 ```http
-POST /api/joblisting/save
+POST /api/v1/job-listings/save
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -383,21 +371,17 @@ POST /api/joblisting/save
 }
 ```
 
-
 #### Get Saved Listings
 ```http
-GET /api/joblisting/get
+GET /api/v1/job-listings/get
 ```
 **Headers:** `Authorization: Bearer <token>`
-
-**Response:** `200 OK`
 
 #### Delete Listing
 ```http
-DELETE /api/joblisting/delete/:id
+DELETE /api/v1/job-listings/delete/:id
 ```
 **Headers:** `Authorization: Bearer <token>`
-
 
 ---
 
@@ -405,7 +389,7 @@ DELETE /api/joblisting/delete/:id
 
 #### Create Reminder
 ```http
-POST /api/reminder/add/:applicationId
+POST /api/v1/reminders/add/:applicationId
 ```
 **Headers:** `Authorization: Bearer <token>`
 
@@ -419,11 +403,9 @@ POST /api/reminder/add/:applicationId
 
 #### Get All Reminders
 ```http
-GET /api/reminder/get
+GET /api/v1/reminders/get
 ```
 **Headers:** `Authorization: Bearer <token>`
-
-```
 
 ---
 
@@ -431,16 +413,11 @@ GET /api/reminder/get
 
 #### Get Dashboard Overview
 ```http
-GET /api/dashboard/overview
+GET /api/v1/dashboard/overview
 ```
 **Headers:** `Authorization: Bearer <token>`
 
-```
-
 ---
-
-
-```
 
 
 ## 📄 License
