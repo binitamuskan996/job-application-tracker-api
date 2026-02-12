@@ -6,20 +6,6 @@ A comprehensive backend API for managing job applications, built with Node.js, E
 [![Express](https://img.shields.io/badge/Express-v4.x-blue.svg)](https://expressjs.com/)
 [![Sequelize](https://img.shields.io/badge/Sequelize-ORM-orange.svg)](https://sequelize.org/)
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Environment Variables](#environment-variables)
-- [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
-- [API Documentation](#api-documentation)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## ✨ Features
 
 ### User Management
@@ -130,16 +116,10 @@ JWT_SECRET=your_super_secret_jwt_key
 JWT_EXPIRE=7d
 
 # Email Configuration (SendInBlue)
-EMAIL_SERVICE=sendgrid
-EMAIL_API_KEY=your_sendgrid_api_key
+EMAIL_SERVICE=SendInBlue
+EMAIL_API_KEY=SendInBlue
 EMAIL_FROM=noreply@jobtracker.com
 
-# File Upload
-MAX_FILE_SIZE=5242880
-UPLOAD_PATH=./uploads
-
-# Frontend URL (for CORS)
-FRONTEND_URL=http://localhost:3001
 ```
 
 ## 🗄 Database Setup
@@ -608,128 +588,9 @@ GET /api/dashboard/overview
 
 ---
 
-## 📁 Project Structure
 
 ```
-job-application-tracker/
-├── config/
-│   └── config.js              # Configuration files
-├── controllers/
-│   ├── authController.js      # Authentication logic
-│   ├── userController.js      # User management
-│   ├── jobApplicationController.js
-│   ├── applicationFileController.js
-│   ├── companyController.js
-│   ├── jobListController.js
-│   ├── reminderController.js
-│   └── dashboardController.js
-├── middleware/
-│   ├── auth.js                # JWT authentication middleware
-│   ├── upload.js              # File upload middleware
-│   └── errorHandler.js        # Error handling middleware
-├── models/
-│   ├── index.js               # Model associations
-│   ├── user.js
-│   ├── jobApplication.js
-│   ├── application_files.js
-│   ├── company.js
-│   ├── jobListing.js
-│   └── reminder.js
-├── routes/
-│   ├── authRoutes.js
-│   ├── userRoutes.js
-│   ├── applicationRoute.js
-│   ├── companyRoutes.js
-│   ├── jobListingRoutes.js
-│   ├── reminderRoutes.js
-│   └── dashboardRoutes.js
-├── utils/
-│   ├── db-connection.js       # Database connection
-│   └── emailService.js        # Email notification service
-├── uploads/                   # Uploaded files directory
-├── .env                       # Environment variables
-├── .env.example              # Example environment file
-├── .gitignore
-├── package.json
-├── server.js                  # Entry point
-└── README.md
-```
 
-## 🔒 Security Features
-
-- Password hashing using bcrypt
-- JWT-based authentication
-- Protected routes with middleware
-- Input validation and sanitization
-- SQL injection prevention with Sequelize ORM
-- File upload restrictions and validation
-- CORS configuration
-
-## 🧪 Testing
-
-```bash
-# Run tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-```
-
-## 🚢 Deployment
-
-### Deploy to AWS
-
-1. **Set up EC2 instance**
-2. **Install Node.js and dependencies**
-3. **Configure environment variables**
-4. **Set up PM2 for process management**
-```bash
-pm2 start server.js --name job-tracker-api
-pm2 save
-pm2 startup
-```
-
-5. **Configure Nginx as reverse proxy**
-6. **Set up SSL certificate**
-
-### Deploy to Heroku
-
-```bash
-heroku create job-tracker-api
-heroku addons:create cleardb:ignite
-git push heroku main
-heroku config:set JWT_SECRET=your_secret_key
-```
-
-## 📝 API Response Format
-
-### Success Response
-```json
-{
-  "success": true,
-  "message": "Operation successful",
-  "data": {}
-}
-```
-
-### Error Response
-```json
-{
-  "success": false,
-  "message": "Error message",
-  "error": "Detailed error information"
-}
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📄 License
 
