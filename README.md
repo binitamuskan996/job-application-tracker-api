@@ -40,15 +40,20 @@ Server runs on:
 
 ---
 
-📌 API Endpoints
+# 📌 API Endpoints
 
-All endpoints (except register & login) require JWT authentication.
+> All endpoints (except Register & Login) require JWT Authentication.
 
-🔐 Authentication Routes
-Register User
+---
 
-POST /auth/register
+## 🔐 Authentication Routes
 
+### 📝 Register User
+
+**POST** `/auth/register`
+
+#### Request Body
+```json
 {
   "name": "John Doe",
   "email": "john@example.com",
@@ -56,165 +61,6 @@ POST /auth/register
   "careerGoal": "Backend Developer"
 }
 
-Login User
-
-POST /auth/login
-
-{
-  "email": "john@example.com",
-  "password": "password123"
-}
-
-👤 User Routes
-Get Profile
-
-GET /user/get
-
-Update Profile
-
-PUT /user/update
-
-{
-  "name": "John Doe",
-  "careerGoal": "Full Stack Developer"
-}
-
-🏢 Company Routes
-Create Company
-
-POST /companies/add
-
-{
-  "companyName": "Google",
-  "contactPerson": "HR Manager",
-  "email": "hr@google.com",
-  "phone": "+123456789",
-  "industry": "Technology",
-  "companySize": "10000+",
-  "notes": "Dream company"
-}
-
-Get All Companies
-
-GET /companies/get
-
-Update Company
-
-PUT /companies/update/:id
-
-Delete Company
-
-DELETE /companies/delete/:id
-
-📄 Application Routes
-Create Application
-
-POST /applications/add
-
-{
-  "companyId": 1,
-  "jobTitle": "Backend Developer",
-  "applicationDate": "2026-02-01",
-  "status": "applied",
-  "notes": "Waiting for response"
-}
-
-Status Values
-
-applied
-
-interviewed
-
-offered
-
-rejected
-
-accepted
-
-Get All Applications
-
-GET /applications/get
-
-Update Application
-
-PUT /applications/update/:id
-
-Delete Application
-
-DELETE /applications/delete/:id
-
-Search Applications
-
-GET /applications/search?keyword=developer
-
-Filter Applications
-
-GET /applications/filter?status=interviewed
-
-Upload Attachment
-
-POST /applications/:id/attachments
-
-Content-Type:
-
-multipart/form-data
-
-
-Form Data:
-
-file: Resume.pdf
-
-
-Stored Field:
-
-fileUrl (TEXT)
-
-⏰ Reminder Routes
-Create Reminder
-
-POST /reminders/add/:applicationId
-
-{
-  "reminderDate": "2026-02-20T10:00:00",
-  "message": "Send follow-up email",
-  "isSent": false
-}
-
-Get All Reminders
-
-GET /reminders/get
-
-📊 Dashboard
-Get Dashboard Overview
-
-GET /dashboard/overview
-
-Returns:
-
-Total Applications
-
-Applications grouped by status
-
-Upcoming Reminders
-
-💾 Saved Job Listings
-Save Job
-
-POST /jobs/save
-
-{
-  "title": "Full Stack Developer",
-  "company": "Amazon",
-  "link": "https://amazon.jobs"
-}
-
-Get Saved Jobs
-
-GET /jobs/get
-
-Delete Saved Job
-
-DELETE /jobs/delete/:id
 # Features
 
 - JWT Authentication
