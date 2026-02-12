@@ -61,6 +61,7 @@ Server runs on:
   "careerGoal": "Backend Developer"
 }
 
+---
 # Features
 
 - JWT Authentication
